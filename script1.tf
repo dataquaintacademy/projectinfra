@@ -12,11 +12,12 @@ provider "aws" {
 }
 
 resource "aws_instance" "example" {
-	count         = 10
+	count         = 20
 	ami           = "ami-0c02fb55956c7d316"
 	instance_type = "t2.micro"
+	associate_public_ip_address = false
 
 	tags = {
-		Name = "example-ec2-instance"
+		Name = "server${count.index + 1}"
 	}
 }
